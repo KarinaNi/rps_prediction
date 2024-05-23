@@ -38,18 +38,20 @@ def validate_input(user_input):
     return user_input.lower()
 
 # To try to predict next move after this 
-def predict_move():
+def predict_move(previous_input, transition_matrix):
     name_to_number = {"rock":0, "paper":1, "scissors":2}
     start_move = random.randint(0,2)
     # need to predict with the updated probability
     
-    
+    # return rock paper or scissor
+    return "paper"
     pass
+    
 # Continously ask data, call learning method, and test if it got right
 def play_game():
     input_data = []
     
-    while len(input_data) < 20:
+    while len(input_data) < 4:
         user_input = input("Rock, Paper, or Scissors: ")
         user_choice = validate_input(user_input)
         computer_choice = random.choice(POSSIBLE_CHOICES)
@@ -60,6 +62,18 @@ def play_game():
     print("Your inputs so far are:")
     print(input_data)
     print("Please wait few minutes while I can learn..")
-    transition = create_transition_matrix(input_data)
+    transition_matrix = create_transition_matrix(input_data)
+    print("Lets play again..")
+
+    input_data_2 = []
+    prev_input = input_data[0]
+    while len(input_data_2) < 20:
+        user_input = input("Rock, Paper or Scissors or y to quit: ")
+        if user_input == "y":
+            break
+        user_choice = validate_input(user_input)
+        computer_choice = predict_move(prev_input, transition_matrix)
+        print("computer chose: " , computer_choice)
+        prev_input = user_choice
 
 play_game()
