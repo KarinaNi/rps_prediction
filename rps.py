@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 POSSIBLE_CHOICES = ["rock", "paper", "scissors"]
 
@@ -18,7 +19,7 @@ def rps(user_choice, computer_choice):
 
 # Function to create transition matrix from markov chain
 def create_transition_matrix(user_input):
-    transition_matrix = np.zeroes(3,3)
+    transition_matrix = np.zeros(3,3)
     name_to_number = {"rock":0, "paper":1, "scissors":2}
     for i, ele in enumerate(user_input):
         if i != len(user_input)-1:
@@ -36,6 +37,8 @@ def validate_input(user_input):
         user_input = input("Rock, Paper, or Scissors: ")
     return user_input.lower()
 
+# To try to predict next move after this 
+def predict_move()
 # Continously ask data, call learning method, and test if it got right
 def play_game():
     input_data = []
