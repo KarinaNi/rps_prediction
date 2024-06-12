@@ -40,9 +40,16 @@ def validate_input(user_input):
 # To try to predict next move after this 
 def predict_move(previous_input, transition_matrix):
     name_to_number = {"rock":0, "paper":1, "scissors":2}
-    start_move = random.randint(0,2)
+    number_to_name = {0: "rock", 1: "paper", 2:"scissors"}
+
     # need to predict with the updated probability
-    
+    previous_number = name_to_number[previous_input]
+    next_move_probabilities = transition_matrix[previous_number]
+
+    randum_number = random.random()
+
+
+
     # return rock paper or scissor
     return "paper"
     pass
